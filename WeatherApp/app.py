@@ -1,16 +1,13 @@
 import tkinter as tk
 import requests
 from tkinter import font
+import tokens
 
 def getWeather(city) :
-    apiKey = '8233ee406d8a49ed7163013ed6f90527'
-    #api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
-    url = 'https://api.openweathermap.org/data/2.5/weather'
     search = {'APPID': apiKey, 'q': city, 'units': 'metric'}
     try :
         response = requests.get(url, search)
         weather = response.json()
-
         output = []
         name = weather['name'] + " " + weather['sys']['country']
         status = weather['weather'][0]['description']
@@ -48,7 +45,7 @@ root.minsize(650, 300)
 canvas = tk.Canvas(root, height = SIZE[0], width = SIZE[1])
 canvas.pack()
 
-backgroung = tk.PhotoImage(file = 'media/weather.png')
+backgroung = tk.PhotoImage(file = "WeatherApp/media/weather.png")
 backgroungLabel = tk.Label(root, image = backgroung)
 backgroungLabel.place(relwidth = 1, relheight = 1, )
 
